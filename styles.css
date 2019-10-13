@@ -1,0 +1,97 @@
+.box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+}
+.side1{
+    grid-row: 1;
+    grid-column: 1/4; 
+    border: 1px solid black;
+    background-color: red;
+}
+.side2{
+    grid-row: 1/4;
+    grid-column: 4; 
+    border: 1px solid black;
+    background-color: yellow;
+}
+.side3{
+    grid-row: 4;
+    grid-column: 2/5; 
+    border: 1px solid black;
+    background-color: blue;
+}
+.side4{
+    grid-row: 2/5;
+    color: white;
+    grid-column: 1; 
+    border: 1px solid black;
+    background-color: black;
+}
+.graph{
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.7fr 1.9fr 2fr 2.4fr 2.9fr 4fr;
+    grid-template-rows: 1;
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+}
+.bar1{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 1;
+    background-color: red;
+    height: 20px;
+}
+.bar2{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 2;
+    background-color: yellow;
+    height: 23px;
+}
+.bar3{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 3;
+    background-color: pink;
+    height: 50px;
+}
+.bar4{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 4;
+    background-color: blue;
+    height: 70px;
+}
+.bar5{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 5;
+    background-color: green;
+    height: 120px;
+}
+.bar6{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 6;
+    background-color: gray;
+    height: 200px;
+}
+.bar7{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 7;
+    background-color: maroon;
+    height: 220px;
+}
+.bar8{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 8;
+    background-color: orange;
+    height: 340px;
+}

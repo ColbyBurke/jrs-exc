@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="stylesForBeer.css">
+    <title>Document</title>
+</head>
+​
+
+<body id="body">
+    <div class="wrapper">
+        <button onclick="getRequest('https://api.punkapi.com/v2/beers', 'IPA')" class="btn1">Random IPA Beer</button>
+        <button onclick="getRequest('https://api.punkapi.com/v2/beers', 'nonIPA')" class="btn2">Random Non-IPA
+            Beer</button>
+        <script>
+            let ipas = 0;
+            function getRequest(url, type) {
+                $.getJSON(url, function (result) {
+                    let ipasOnly = result.filter(x => x.description.includes('IPA'))
+                    let nonIPAs = result.filter(x => !x.description.includes('IPA'))
+                    document.getElementById('name').innerHTML = ''
+                    document.getElementById('desc').innerHTML = ''
+                    document.getElementById('abv').innerHTML = ''
+                    console.log(ipasOnly)
+                    if (type === 'IPA') {
+                        i = Math.floor(Math.random() * ipasOnly.length) + 1
+                        document.getElementById("body").style.backgroundImage = "url(" + "'" + result[i].image_url + "'" + ")"
+                        document.getElementById('name').innerHTML += result[i].name + '<br/>'
+                        document.getElementById('desc').innerHTML += result[i].description + '<br/>'
+                        document.getElementById('abv').innerHTML += 'Alchohol by Volume: ' + result[i].abv + '<br/>'
+                    } else {
+                        i = Math.floor(Math.random() * nonIPAs.length) + 1
+                        document.getElementById('body').style.backgroundImage = "url(" + "'" + result[i].image_url + "'" + ")"
+                        document.getElementById('name').innerHTML += result[i].name + '<br/>'
+                        document.getElementById('desc').innerHTML += result[i].description + '<br/>'
+                        document.getElementById('abv').innerHTML += 'Alchohol by Volume: ' + result[i].abv + '<br/>'
+                    }
+
+                });
+            }
+        </script>
+        ​
+        <div id="doc-text">
+            ​<div id="name"></div>
+            <div id="desc"></div>
+            <div id="abv"></div>
+            ​
+        </div>
+    </div>
+</body>
+
+</html>

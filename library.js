@@ -1,4 +1,4 @@
-const co$ = {
+  co$ = {
   addNums: () => [5, 6, 7, 8, 9, 10].reduce((x, y) => x + y),
   perim: () => 26,
   perimGiven: (w, h) => (w * 2) + (h * 2),
@@ -110,7 +110,123 @@ const co$ = {
     for (i = 0; i < arr.length; i++) {
       arr[i] = action(arr[i])
     }
+  },
+  fibonacci: n => {
+    if (n <= 1) return 1
+    else {
+      console.log('num' + ' = ' + n);
+      return fibonacci(n - 1) + fibonacci(n - 2)
+    }
+  },
+  factorialRecursive: n => {
+    if (n === 1) {
+      return 1
+    }
+    else {
+      console.log(n + ' ' + (n - 1));
+      return n * factorialRecursive(n - 1)
+    }
+  },
+  gcd: (x, y) => !y ? x : gcd(y, x % y),
+  range: (x, y) => {
+    if (y - x === 2) {
+      console.log(`${y} is y ${x} is x`)
+      return [x + 1]
+    } else {
+      let arr = range(x, y - 1)
+      console.log(arr + ' arr assignment')
+      arr.push(y - 1)
+      console.log(arr + ' arr after push')
+      return arr
+    }
+  },
+  sumAll: arr => {
+    if (arr.length === 1) {
+      return arr[0]
+    } else {
+      return arr[0] + sumAll(arr.slice(1, arr.length))
+    }
+  },
+  power: (base, exp) => {
+    if (exp === 1) {
+      return base
+    } else {
+      return base * power(base, exp - 1)
+    }
+  },
+  fibonacci: n => n <= 1 ? 1 : fibonacci(n - 1) + fibonacci(n - 2),
+  isEvenRecursive: n => {
+    if (n === 0) return true
+    else if (Math.abs(n) === 1) return false
+    else return isEvenRecursive(n - 2)
+  },
+  binarySearchRecursive: (num, arr) => {
+    let newArr = arr
+    //middle is an index not a value
+    let middle = Math.floor(newArr.length / 2)
+    console.log(newArr);
+    console.log(arr);
+    if (num === newArr[middle]) {
+      console.log('answer');
+      return final.indexOf(newArr[middle])
+    } else if (newArr[middle] > num) {
+      console.log('greater than');
+      newArr = newArr.slice(0, middle)
+      return binarySearch(num, newArr)
+    } else {
+      console.log('less than');
+      newArr = newArr.slice(middle + 1, arr.length)
+      return binarySearch(num, newArr)
+    }
+  },
+  myReduce: (arr, func) => {
+    let total = 0
+    for (i = 0; i < arr.length; i++) {
+      total = func(total, arr[i])
+    }
+    return total
+  },
+  numsToWords: arr => {
+    let words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'twenty', 'thrity', 'ninety-nine', 'negative two']
+    return arr.map((x,y) => words[y])
+  },
+  addTenMap: arr => arr.map(x => x + 10),
+  showEvenFilter: arr => arr.filter(x => x % 2 === 0),
+  showDivisibleBy5Filter: arr => arr.filter(x => x % 5 === 0),
+  countTrueReduce: arr => arr.reduce((x, y) => !y ? x : x + 1, 0),
+  addReduce: arr => arr.reduce((x, y) => x + y),
+  addToObjReduce: arr => {
+    let obj = {}
+    arr.forEach(x => x.reduce((x, y) =>{
+      obj[x] = y
+    }))
+    return obj
+  },
+  concatReduce = (...args) => args.reduce((x,y) => x.concat(y)),
+  filterReduce: function (fn, list) {
+    let newArr = []
+    list.reduce((x,y) => {
+      if(fn(x)) newArr.push(x)
+      if(fn(y)) newArr.push(y)
+    })
+    return newArr 
+  },
+  rejectReduce: function (fn, list) {
+    let newArr = []
+    if(!fn(list[0])) newArr.push(list[0])
+    list.reduce((x,y,z) => {
+      if(!fn(list[z])) newArr.push(list[z])
+    })
+    return newArr 
+  },
+  findReduce: function (fn, list) {
+    let index = 0
+    list.reduce((x,y) => {
+      if(fn(y)){
+        index = x
+      }else return x + 1
+    }, 0)
+    return index
   }
 }
-console.log(co$.sortTwoArrays([1,2,3],[3,2,1]));
-const alertObj = (func) => alert(func)
+console.log(co$.sortTwoArrays([1,2,3],[3,2,1]));  alertObj = (func) => alert(func)

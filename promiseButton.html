@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    ​
+    <title>Document</title>
+</head>
+​
+
+<body>
+    <button onclick="getRequest('https://api.openbrewerydb.org/breweries?by_state=south_carolina')">Make the HTTP GET
+        Request</button>
+    <script>
+        function getRequest(url) {
+            const display = n => {
+                for (i = 0; i < 20; i++) {
+                    document.getElementById('doc-text').innerHTML += n[i].name + '<br/>'
+                }
+            }
+            let promise = fetch(url)
+            promise.then((response) => response.json().then(display));
+
+            async function createFlow() {
+                let dataAwait = await fetch("https://api.openbrewerydb.org/breweries?by_state=south_carolina")
+                dataAwait = await dataAwait.json()
+                display(dataAwait)
+            }
+            createFlow()
+        }
+    </script>
+    ​
+    <div id="doc-text">
+        ​
+        ​
+    </div>
+</body>
+​
+
+</html>
